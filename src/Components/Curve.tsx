@@ -1,5 +1,31 @@
+const Wave = (props: {
+  periods: number;
+  wavelength: number;
+  offset_x: number;
+  offset_y: number;
+  amplitude: number;
+}) => {
+  const { periods, wavelength, offset_x, offset_y, amplitude } = props;
+  return (
+    <g>
+      {Array.from(Array(periods)).map((_, i) => {
+        return (
+          <Curve
+            {...{
+              offset_x: offset_x + i * wavelength * 2,
+              offset_y,
+              wavelength,
+              amplitude,
+            }}
+          />
+        );
+      })}
+    </g>
+  );
+};
+
 const Curve = (props: any) => {
-  const { offset_x, offset_y, period, amplitude } = props;
+  const { offset_x, offset_y, wavelength, amplitude } = props;
   const x = offset_x;
   const y = offset_y;
 
@@ -8,17 +34,17 @@ const Curve = (props: any) => {
 
   const points = {
     a: { x: 0 + offset_x, y: 0 + offset_y },
-    b: { x: BOTTOM_CONTROL_POINT * period + offset_x, y: 0 + offset_y },
+    b: { x: BOTTOM_CONTROL_POINT * wavelength + offset_x, y: 0 + offset_y },
     c: {
-      x: TOP_CONTROL_POINT * period + offset_x,
+      x: TOP_CONTROL_POINT * wavelength + offset_x,
       y: 1 * amplitude + offset_y,
     },
-    d: { x: 1 * period + offset_x, y: 1 * amplitude + offset_y },
+    d: { x: 1 * wavelength + offset_x, y: 1 * amplitude + offset_y },
     e: {
-      x: (1 + BOTTOM_CONTROL_POINT) * period + offset_x,
+      x: (1 + BOTTOM_CONTROL_POINT) * wavelength + offset_x,
       y: 1 * amplitude + offset_y,
     },
-    f: { x: (1 + TOP_CONTROL_POINT) * period + offset_x, y: 0 + offset_y },
+    f: { x: (1 + TOP_CONTROL_POINT) * wavelength + offset_x, y: 0 + offset_y },
     g: { x: 2 * amplitude + offset_x, y: 0 + offset_y },
   };
 
@@ -43,13 +69,13 @@ const Curve = (props: any) => {
       <path
         d={`
           M ${points.a.x} ${points.a.y}, 
-          C ${points.a.x} ${points.a.y}, ${BOTTOM_CONTROL_POINT * period + x} ${
-          0 + y
-        }, 
-          ${0.5 * period + x} ${0.5 * amplitude + y}
-          M ${0.5 * period + x} ${0.5 * amplitude + y}, 
-          S ${TOP_CONTROL_POINT * period + x} ${1.0 * amplitude + y}, ${
-          1.0 * period + x
+          C ${points.a.x} ${points.a.y}, ${
+          BOTTOM_CONTROL_POINT * wavelength + x
+        } ${0 + y}, 
+          ${0.5 * wavelength + x} ${0.5 * amplitude + y}
+          M ${0.5 * wavelength + x} ${0.5 * amplitude + y}, 
+          S ${TOP_CONTROL_POINT * wavelength + x} ${1.0 * amplitude + y}, ${
+          1.0 * wavelength + x
         } ${1.0 * amplitude + y}
           `}
         stroke="black"
@@ -58,14 +84,14 @@ const Curve = (props: any) => {
 
       <path
         d={`
-          M ${period + x} ${amplitude + y}, 
-          C ${period + x} ${amplitude + y}, ${
-          (1 + BOTTOM_CONTROL_POINT) * period + x
-        } ${amplitude + y}, ${1.5 * period + x} ${0.5 * amplitude + y}
-          M ${1.5 * period + x} ${0.5 * amplitude + y}, 
-          S ${(1 + TOP_CONTROL_POINT) * period + x} ${0.0 * amplitude + y}, ${
-          2.0 * period + x
-        } ${0.0 * amplitude + y}
+          M ${wavelength + x} ${amplitude + y}, 
+          C ${wavelength + x} ${amplitude + y}, ${
+          (1 + BOTTOM_CONTROL_POINT) * wavelength + x
+        } ${amplitude + y}, ${1.5 * wavelength + x} ${0.5 * amplitude + y}
+          M ${1.5 * wavelength + x} ${0.5 * amplitude + y}, 
+          S ${(1 + TOP_CONTROL_POINT) * wavelength + x} ${
+          0.0 * amplitude + y
+        }, ${2.0 * wavelength + x} ${0.0 * amplitude + y}
           `}
         stroke="black"
         fill="transparent"
@@ -74,4 +100,4 @@ const Curve = (props: any) => {
   );
 };
 
-export { Curve };
+export { Curve, Wave };

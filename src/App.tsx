@@ -1,4 +1,4 @@
-import { Curve } from "./Components/Curve";
+import { Curve, Wave } from "./Components/Curve";
 import { Grid } from "./Components/Grid";
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
   const lineCount = 20;
   const lineGap = 20;
 
-  const spacing = 50;
+  const pixelSpacing = 50;
 
   return (
     <div className="App">
@@ -22,16 +22,8 @@ const App = () => {
               end_y: periods * scale_y,
             }}
           />
-          <Curve
-            {...{
-              offset_x: 0,
-              offset_y: 0,
-              period: scale_x,
-              amplitude: scale_y,
-            }}
-          />
-        </g>
-      </svg> */}
+          </g>
+        </svg> */}
       <svg width="1100px" height="1100px" viewBox="0 0 1100 1100">
         <Grid
           {...{
@@ -39,11 +31,52 @@ const App = () => {
             start_y: 0,
             end_x: 1000,
             end_y: 1000,
-            spacing,
+            spacing: pixelSpacing,
           }}
-        ></Grid>
+        />
+        <Moire
+          {...{
+            pixelSpacing,
+            periods: 5,
+            teeth: 100,
+          }}
+        />
+        <g transform="rotate(5)">
+          <Moire
+            {...{
+              pixelSpacing,
+              periods: 5,
+              teeth: 100,
+            }}
+          />
+        </g>
       </svg>
     </div>
+  );
+};
+
+const Moire = (props: {
+  pixelSpacing: number;
+  periods: number;
+  teeth: number;
+}) => {
+  const { pixelSpacing, teeth, periods } = props;
+  return (
+    <g>
+      {Array.from(Array(teeth)).map((_, i) => {
+        return (
+          <Wave
+            {...{
+              offset_x: pixelSpacing / 2,
+              offset_y: pixelSpacing / 2 + pixelSpacing * (0.1 * i),
+              wavelength: Math.PI * pixelSpacing,
+              amplitude: pixelSpacing,
+              periods,
+            }}
+          />
+        );
+      })}
+    </g>
   );
 };
 

@@ -19,7 +19,12 @@ const Grid = (props: any) => {
   return (
     <g>
       <circle cx={spacing / 2} cy={spacing / 2} r={4} />
-      <text x={spacing / 2} y={spacing / 2} textAnchor="begin">
+      <text
+        x={spacing / 2}
+        y={spacing / 2}
+        textAnchor="begin"
+        fontSize={getGridFontSize(spacing, end_y)}
+      >
         ({spacing / 2},{spacing / 2})
       </text>
       {Array.from(Array(Math.floor((end_x - start_x) / spacing))).map(
