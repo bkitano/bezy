@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Curve } from "./Components/Curve";
+import { Grid } from "./Components/Grid";
 
-function App() {
+const App = () => {
+  const periods = 5;
+  const scale_x = 100;
+  const scale_y = 100;
+  const offset_x = 5;
+  const offset_y = 5;
+  const lineCount = 20;
+  const lineGap = 20;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <svg
+        width={periods * scale_x + offset_x}
+        height={periods * scale_y + offset_y}
+      >
+        <Grid
+          {...{
+            end_x: periods * scale_x + offset_x,
+            end_y: periods * scale_y + offset_y,
+          }}
+        />
+        <Curve
+          {...{
+            offset_x,
+            offset_y,
+            period: scale_x,
+            amplitude: scale_y,
+          }}
+        />
+      </svg>
     </div>
   );
-}
+};
 
 export default App;
