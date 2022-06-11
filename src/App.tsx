@@ -10,6 +10,8 @@ const App = () => {
   const lineCount = 20;
   const lineGap = 20;
 
+  const spacing = 50;
+
   return (
     <div className="App">
       {/* <svg width={periods * scale_x} height={periods * scale_y}>
@@ -31,59 +33,15 @@ const App = () => {
         </g>
       </svg> */}
       <svg width="1100px" height="1100px" viewBox="0 0 1100 1100">
-        <rect
+        <Grid
           {...{
-            x: 0,
-            y: 550,
-            width: 530,
-            height: 530,
-            fill: "lightgreen",
-            stroke: "green",
-            strokeWidth: 20,
+            start_x: 0,
+            start_y: 0,
+            end_x: 1000,
+            end_y: 1000,
+            spacing,
           }}
-        />
-        <rect
-          {...{
-            x: 550,
-            y: 550,
-            width: 530,
-            height: 530,
-            fill: "lightyellow",
-            stroke: "yellow",
-            strokeWidth: 20,
-          }}
-        />
-        <rect
-          {...{
-            x: 0,
-            y: 0,
-            width: 530,
-            height: 530,
-            fill: "lightblue",
-            stroke: "blue",
-            strokeWidth: 20,
-          }}
-        />
-        <rect
-          {...{
-            x: 550,
-            y: 0,
-            width: 530,
-            height: 530,
-            fill: "pink",
-            stroke: "red",
-            strokeWidth: 20,
-          }}
-        />
-        {/* <rect
-          {...{
-            x: 0,
-            y: 0,
-            width: 1100,
-            height: 1100,
-            fill: "red",
-          }}
-        /> */}
+        ></Grid>
       </svg>
     </div>
   );
