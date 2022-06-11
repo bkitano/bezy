@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 const Wave = (props: {
   periods: number;
   wavelength: number;
@@ -17,7 +19,7 @@ const Wave = (props: {
               wavelength,
               amplitude,
             }}
-          />
+          ></Curve>
         );
       })}
     </g>
@@ -25,7 +27,7 @@ const Wave = (props: {
 };
 
 const Curve = (props: any) => {
-  const { offset_x, offset_y, wavelength, amplitude } = props;
+  const { offset_x, offset_y, wavelength, amplitude, children } = props;
   const x = offset_x;
   const y = offset_y;
 

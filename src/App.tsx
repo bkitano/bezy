@@ -14,18 +14,8 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* <svg width={periods * scale_x} height={periods * scale_y}>
-        <g offset={5}>
-          <Grid
-            {...{
-              end_x: periods * scale_x,
-              end_y: periods * scale_y,
-            }}
-          />
-          </g>
-        </svg> */}
       <svg width="1100px" height="1100px" viewBox="0 0 1100 1100">
-        <Grid
+        {/* <Grid
           {...{
             start_x: 0,
             start_y: 0,
@@ -33,20 +23,30 @@ const App = () => {
             end_y: 1000,
             spacing: pixelSpacing,
           }}
-        />
+        /> */}
         <Moire
           {...{
             pixelSpacing,
             periods: 5,
-            teeth: 100,
+            teeth: 1000,
           }}
         />
-        <g transform="rotate(5)">
+        <g transform="rotate(20)">
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from="0 60 70"
+            to="360 60 70"
+            dur="150s"
+            repeatCount="indefinite"
+          ></animateTransform>
           <Moire
             {...{
               pixelSpacing,
-              periods: 5,
-              teeth: 100,
+              periods: 10,
+              teeth: 1000,
+              amplitude: pixelSpacing * 0.5,
+              wavelength: pixelSpacing * 1.3,
             }}
           />
         </g>
@@ -59,8 +59,16 @@ const Moire = (props: {
   pixelSpacing: number;
   periods: number;
   teeth: number;
+  wavelength?: number;
+  amplitude?: number;
 }) => {
-  const { pixelSpacing, teeth, periods } = props;
+  const {
+    pixelSpacing,
+    teeth,
+    periods,
+    wavelength = Math.PI * pixelSpacing,
+    amplitude = pixelSpacing,
+  } = props;
   return (
     <g>
       {Array.from(Array(teeth)).map((_, i) => {
@@ -69,8 +77,8 @@ const Moire = (props: {
             {...{
               offset_x: pixelSpacing / 2,
               offset_y: pixelSpacing / 2 + pixelSpacing * (0.1 * i),
-              wavelength: Math.PI * pixelSpacing,
-              amplitude: pixelSpacing,
+              wavelength,
+              amplitude,
               periods,
             }}
           />
