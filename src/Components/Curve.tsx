@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 const Wave = (props: {
   periods: number;
   wavelength: number;
