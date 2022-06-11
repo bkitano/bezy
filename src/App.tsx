@@ -8,6 +8,8 @@ const App = () => {
       </h1>
       <Link to="/circles">Circles</Link>
       <br />
+      <Link to="/three-circles">Circles</Link>
+      <br />
       <Link to="/circle-wave">Circle Wave</Link>
       <br />
       <Link to="/waves">Waves</Link>

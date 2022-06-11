@@ -9,6 +9,7 @@ import { TwoCircles } from "./pieces/TwoCircles";
 import SvgWrapper from "./SvgWrapper";
 import { TwoWaves } from "./pieces/TwoWaves";
 import { CircleWave } from "./pieces/CircleWave";
+import { ThreeCircles } from "./pieces/ThreeCircles";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -49,6 +50,19 @@ root.render(
           element={
             <SvgWrapper>
               <CircleWave
+                {...{
+                  pixelSpacing: 50,
+                  combDistance: 0.1,
+                }}
+              />
+            </SvgWrapper>
+          }
+        />
+        <Route
+          path="/three-circles"
+          element={
+            <SvgWrapper>
+              <ThreeCircles
                 {...{
                   pixelSpacing: 50,
                   combDistance: 0.1,
