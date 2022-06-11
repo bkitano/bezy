@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { TwoCircles } from "./pieces/TwoCircles";
 import SvgWrapper from "./SvgWrapper";
+import { TwoWaves } from "./pieces/TwoWaves";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -21,6 +22,19 @@ root.render(
           element={
             <SvgWrapper>
               <TwoCircles
+                {...{
+                  pixelSpacing: 50,
+                  combDistance: 0.1,
+                }}
+              />
+            </SvgWrapper>
+          }
+        />
+        <Route
+          path="/waves"
+          element={
+            <SvgWrapper>
+              <TwoWaves
                 {...{
                   pixelSpacing: 50,
                   combDistance: 0.1,
