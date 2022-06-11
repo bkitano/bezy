@@ -14,20 +14,19 @@ const TwoCircles = ({
   return (
     <g>
       <g>
-        <Circle {...{ pixelSpacing, combDistance }} />
+        <Circle {...{ pixelSpacing, combDistance, cx: 550, cy: 650 }} />
       </g>
       <g>
         <animateTransform
           {...{
             attributeName: "transform",
             type: "translate",
-            from: "0 400",
-            to: "0 100",
-            dur: "40s",
+            to: "0 500",
+            dur: "30s",
             repeatCount: "indefinite",
           }}
         />
-        <Circle {...{ pixelSpacing, combDistance, cx: 550, cy: 550 }} />
+        <Circle {...{ pixelSpacing, combDistance, cx: 550, cy: 450 }} />
       </g>
     </g>
   );
