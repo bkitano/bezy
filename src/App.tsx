@@ -1,15 +1,8 @@
+import { useEffect, useState } from "react";
 import { Curve, Wave } from "./Components/Curve";
 import { Grid } from "./Components/Grid";
 
 const App = () => {
-  const periods = 5;
-  const scale_x = 100;
-  const scale_y = 100;
-  const offset_x = 5;
-  const offset_y = 5;
-  const lineCount = 20;
-  const lineGap = 20;
-
   const pixelSpacing = 50;
 
   return (
@@ -24,31 +17,58 @@ const App = () => {
             spacing: pixelSpacing,
           }}
         /> */}
-        <Moire
-          {...{
-            pixelSpacing,
-            periods: 5,
-            teeth: 1000,
-          }}
-        />
-        <g transform="rotate(20)">
+        <g>
           <animateTransform
             attributeName="transform"
             type="rotate"
-            from="0 60 70"
-            to="360 60 70"
-            dur="150s"
+            from="360 550 550"
+            // from="0 0 0"
+            to="0 550 550"
+            // to="360 0 0"
+            dur="1500s"
             repeatCount="indefinite"
-          ></animateTransform>
+          />
           <Moire
             {...{
               pixelSpacing,
-              periods: 10,
+              periods: 5,
               teeth: 1000,
-              amplitude: pixelSpacing * 0.5,
-              wavelength: pixelSpacing * 1.3,
+              amplitude: Math.random() * pixelSpacing,
+              wavelength: (3 + Math.random()) * pixelSpacing,
             }}
           />
+        </g>
+        <g>
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from="0 550 550"
+            // from="0 0 0"
+            to="360 550 550"
+            // to="360 0 0"
+            dur="1500s"
+            repeatCount="indefinite"
+          />
+          <g transform="rotate(20)">
+            <animateTransform
+              attributeName="transform"
+              type="translate"
+              from="0 20"
+              to="0 200"
+              dur="180s"
+              repeatCount="indefinite"
+            />
+            <Moire
+              {...{
+                pixelSpacing,
+                periods: 10,
+                teeth: 1000,
+                // amplitude: pixelSpacing * 0.5,
+                amplitude: Math.random() * pixelSpacing,
+                wavelength: (3 + Math.random()) * pixelSpacing,
+              }}
+            />
+          </g>
         </g>
       </svg>
     </div>
