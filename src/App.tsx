@@ -66,6 +66,7 @@ const App = () => {
                 // amplitude: pixelSpacing * 0.5,
                 amplitude: Math.random() * pixelSpacing,
                 wavelength: (3 + Math.random()) * pixelSpacing,
+                combDistance: 0.05 + 0.2 * Math.random(),
               }}
             />
           </g>
@@ -81,6 +82,7 @@ const Moire = (props: {
   teeth: number;
   wavelength?: number;
   amplitude?: number;
+  combDistance?: number;
 }) => {
   const {
     pixelSpacing,
@@ -88,6 +90,7 @@ const Moire = (props: {
     periods,
     wavelength = Math.PI * pixelSpacing,
     amplitude = pixelSpacing,
+    combDistance = 0.1,
   } = props;
   return (
     <g>
@@ -96,7 +99,7 @@ const Moire = (props: {
           <Wave
             {...{
               offset_x: pixelSpacing / 2,
-              offset_y: pixelSpacing / 2 + pixelSpacing * (0.1 * i),
+              offset_y: pixelSpacing / 2 + pixelSpacing * (combDistance * i),
               wavelength,
               amplitude,
               periods,
