@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { TwoCircles } from "./pieces/TwoCircles";
 import SvgWrapper from "./SvgWrapper";
 import { TwoWaves } from "./pieces/TwoWaves";
+import { CircleWave } from "./pieces/CircleWave";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -35,6 +36,19 @@ root.render(
           element={
             <SvgWrapper>
               <TwoWaves
+                {...{
+                  pixelSpacing: 50,
+                  combDistance: 0.1,
+                }}
+              />
+            </SvgWrapper>
+          }
+        />
+        <Route
+          path="/circle-wave"
+          element={
+            <SvgWrapper>
+              <CircleWave
                 {...{
                   pixelSpacing: 50,
                   combDistance: 0.1,
