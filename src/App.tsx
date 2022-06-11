@@ -1,3 +1,4 @@
+import { TwoCircles } from "./pieces/TwoCircles";
 import { TwoWaves } from "./pieces/TwoWaves";
 
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
             spacing: pixelSpacing,
           }}
         /> */}
-        <TwoWaves {...{ pixelSpacing }} />
+        <TwoCircles {...{ pixelSpacing, combDistance: 0.1 }} />
       </svg>
     </div>
   );
