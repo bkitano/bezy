@@ -34,8 +34,6 @@ const CircleWave = ({
           {...{
             pixelSpacing,
             combDistance,
-            periods: 5,
-            teeth: 250,
           }}
         />
       </g>
