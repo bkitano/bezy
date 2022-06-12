@@ -15,8 +15,8 @@ const RadialWave = ({
           {...{
             pixelSpacing,
             combDistance,
-            periods: 5,
-            teeth: 250,
+            amplitude: Math.random() * pixelSpacing,
+            wavelength: 3 * Math.random() * pixelSpacing,
           }}
         />
       </g>
@@ -28,11 +28,13 @@ const RadialWave = ({
             repeatCount: "indefinite",
           }}
         />
-        <Radial {...{
+        <Radial
+          {...{
             cx: 0,
             cy: 0,
-            r: 20
-        }} />
+            r: 20,
+          }}
+        />
       </g>
     </g>
   );

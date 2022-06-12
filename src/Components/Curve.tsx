@@ -1,14 +1,20 @@
+import useWindowDimensions from "../utils/useWindowDimensions";
+
 const Wave = (props: {
-  periods: number;
   wavelength: number;
-  offset_x: number;
-  offset_y: number;
+  offset_x?: number;
+  offset_y?: number;
   amplitude: number;
+  periods?: number;
 }) => {
-  const { periods, wavelength, offset_x, offset_y, amplitude } = props;
+  const { periods, wavelength, offset_x = 0, offset_y = 0, amplitude } = props;
+  const { width, height } = useWindowDimensions();
+
+  const widthAdjustedPeriods = Math.ceil(width / wavelength);
+
   return (
     <g>
-      {Array.from(Array(periods)).map((_, i) => {
+      {Array.from(Array(periods ?? widthAdjustedPeriods)).map((_, i) => {
         return (
           <Curve
             {...{

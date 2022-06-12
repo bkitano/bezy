@@ -1,9 +1,10 @@
+import useWindowDimensions from "../utils/useWindowDimensions";
 import { Wave } from "./Curve";
 
 const Moire = (props: {
   pixelSpacing: number;
-  periods: number;
-  teeth: number;
+  teeth?: number;
+  periods?: number;
   wavelength?: number;
   amplitude?: number;
   combDistance?: number;
@@ -16,17 +17,21 @@ const Moire = (props: {
     amplitude = pixelSpacing,
     combDistance = 0.1,
   } = props;
+
+  const { width, height } = useWindowDimensions();
+  const heightAdjustedTeeth = Math.ceil((height + amplitude) / (combDistance * pixelSpacing));
+  const widthAdjustedPeriods = Math.ceil(width / wavelength);
+
   return (
     <g>
-      {Array.from(Array(teeth)).map((_, i) => {
+      {Array.from(Array(teeth ?? heightAdjustedTeeth)).map((_, i) => {
         return (
           <Wave
             {...{
-              offset_x: pixelSpacing / 2,
-              offset_y: pixelSpacing / 2 + pixelSpacing * (combDistance * i),
+              offset_y: pixelSpacing * (combDistance * i) - amplitude,
               wavelength,
               amplitude,
-              periods,
+              periods: periods ?? widthAdjustedPeriods,
             }}
           />
         );

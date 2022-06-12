@@ -9,7 +9,6 @@ const Radial = ({
   const radians = Array.from(Array(rayCount).keys()).map((ray) => {
     return (ray * (2 * Math.PI)) / rayCount;
   });
-  console.log(radians);
   return (
     <g>
       {/* angle = 0 */}

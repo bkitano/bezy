@@ -1,7 +1,11 @@
+import useWindowDimensions from "./utils/useWindowDimensions";
+
 const SvgWrapper = (props: any) => {
+  const { width, height } = useWindowDimensions();
+
   return (
     <div className="svg">
-      <svg width="1100px" height="1100px" viewBox="0 0 1100 1100">
+      <svg {...{ width, height }}>
         {/* <Grid
             {...{
               start_x: 0,
