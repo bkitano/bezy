@@ -35,6 +35,13 @@ const ThreeWaves = ({ pixelSpacing }: { pixelSpacing: number }) => (
           path: "M 0 0 L 1000 1000 Z",
         }}
       /> */}
+      <animateTransform {...{
+        attributeName: "transform",
+        type: "rotate",
+        to: "360 500 500",
+        dur: "180s",
+        repeatCount: "indefinite",
+      }}/>
       <Moire
         {...{
           pixelSpacing,
