@@ -16,8 +16,6 @@ const TwoWaves = ({ pixelSpacing }: { pixelSpacing: number }) => (
       <Moire
         {...{
           pixelSpacing,
-          periods: 5,
-          teeth: 1000,
           amplitude: Math.random() * pixelSpacing,
           wavelength: (3 + Math.random()) * pixelSpacing,
         }}
@@ -46,9 +44,6 @@ const TwoWaves = ({ pixelSpacing }: { pixelSpacing: number }) => (
         <Moire
           {...{
             pixelSpacing,
-            periods: 10,
-            teeth: 1000,
-            // amplitude: pixelSpacing * 0.5,
             amplitude: Math.random() * pixelSpacing,
             wavelength: (3 + Math.random()) * pixelSpacing,
             combDistance: 0.05 + 0.2 * Math.random(),
