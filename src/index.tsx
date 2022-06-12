@@ -12,6 +12,7 @@ import { CircleWave } from "./pieces/CircleWave";
 import { ThreeCircles } from "./pieces/ThreeCircles";
 import { ThreeWaves } from "./pieces/ThreeWaves";
 import { Radial } from "./Components/Radial";
+import { RadialWave } from "./pieces/RadialWave";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -87,10 +88,10 @@ root.render(
           }
         />
         <Route
-          path="/radial"
+          path="/radial-wave"
           element={
             <SvgWrapper>
-              <Radial
+              <RadialWave
                 {...{
                   pixelSpacing: 50,
                   combDistance: 0.1,

@@ -13,6 +13,8 @@ const App = () => {
       <Link to="/waves">Waves</Link>
       <br />
       <Link to="/three-waves">Three Waves</Link>
+      <br />
+      <Link to="/radial-wave">Radial Wave</Link>
     </div>
   );
 };
