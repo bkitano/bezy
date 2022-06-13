@@ -15,6 +15,8 @@ const App = () => {
       <Link to="/three-waves">Three Waves</Link>
       <br />
       <Link to="/radial-wave">Radial Wave</Link>
+      <br />
+      <Link to="/radial-circle">Radial Circle</Link>
     </div>
   );
 };

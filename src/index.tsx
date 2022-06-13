@@ -11,8 +11,8 @@ import { TwoWaves } from "./pieces/TwoWaves";
 import { CircleWave } from "./pieces/CircleWave";
 import { ThreeCircles } from "./pieces/ThreeCircles";
 import { ThreeWaves } from "./pieces/ThreeWaves";
-import { Radial } from "./Components/Radial";
 import { RadialWave } from "./pieces/RadialWave";
+import { RadialCircle } from "./pieces/RadialCircle";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -96,6 +96,19 @@ root.render(
                   pixelSpacing: 50,
                   combDistance: 0.1,
                 }}
+              />
+            </SvgWrapper>
+          }
+        />
+        <Route
+          path="/radial-circle"
+          element={
+            <SvgWrapper>
+              <RadialCircle
+              // {...{
+              //   pixelSpacing: 50,
+              //   combDistance: 0.1,
+              // }}
               />
             </SvgWrapper>
           }
