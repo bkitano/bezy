@@ -1,5 +1,6 @@
 import { Moire } from "../Components/Moire";
 import { Radial } from "../Components/Radial";
+import { DiagonalPath } from "../paths/Diagonal";
 
 const RadialWave = ({
   pixelSpacing,
@@ -21,13 +22,7 @@ const RadialWave = ({
         />
       </g>
       <g>
-        <animateMotion
-          {...{
-            dur: "90s",
-            path: "M 0 0 L 700 700 Z",
-            repeatCount: "indefinite",
-          }}
-        />
+        <DiagonalPath />
         <Radial
           {...{
             cx: 0,
